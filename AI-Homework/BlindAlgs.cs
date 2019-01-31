@@ -1,6 +1,4 @@
 ﻿
-using System;
-
 namespace AI_Homework
 {
     public static class BlindAlogorithms
@@ -33,7 +31,7 @@ namespace AI_Homework
                 foreach (var child in children)
                 {
                     Matrix[child.X][child.Y] = '*';
-                    Point found = depthLimitedSearch(child, goal, depth - 1);
+                    var found = depthLimitedSearch(child, goal, depth - 1);
                     if (found != null)
                         return found;
                 }

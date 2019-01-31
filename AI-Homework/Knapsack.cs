@@ -151,13 +151,6 @@ namespace AI_Homework
             return fitnesValue;
         }
 
-        private int bestFitness()
-        {
-            string bestChromosome = population[population.Count - 1];
-            var fitness = calculateFitness(bestChromosome);
-            return fitness;
-        }
-
         private int bestSolution()
         {
             int bestValue = 0;
