@@ -27,17 +27,18 @@ namespace AI_Homework
             //Console.WriteLine("IDS path: ");
             //Common.PrettyPrint(iterativeDeepeningDFSMatrix, 7, 7);
 
-            //var aStarMatrix = Common.GetRandomMatrix(7, 7);
-            //InformedAlgs.Matrix = aStarMatrix;
-            //InformedAlgs.AStar(start, target);
-            //Console.WriteLine("A-Star path: ");
-            //Common.PrettyPrint(aStarMatrix, 7, 7);
+            var aStarMatrix = Common.GetRandomMatrix(7, 7);
+            InformedAlgs.Matrix = aStarMatrix;
+            InformedAlgs.AStar(start, target);
+            Console.WriteLine("A-Star path: ");
+            Console.WriteLine(InformedAlgs.PathLength);
+            Common.PrettyPrint(aStarMatrix, 7, 7);
 
-            Board board = new Board(8);
-            Console.WriteLine(DateTime.Now + ": Algorithm is running..");
-            board.Solve();
-            Console.WriteLine(DateTime.Now + ": Algorithm finished.");
-            board.PrettyPrint(8);
+            //Board board = new Board(8);
+            //Console.WriteLine(DateTime.Now + ": Algorithm is running..");
+            //board.Solve();
+            //Console.WriteLine(DateTime.Now + ": Algorithm finished.");
+            //board.PrettyPrint(8);
 
             //var knapsack = new Knapsack();
             //knapsack.InitializeItems();

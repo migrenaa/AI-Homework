@@ -34,22 +34,22 @@ namespace AI_Homework
 
             if (vertex.X < matrix.Length - 1 && matrix[vertex.X + 1][vertex.Y] == '1')
             {
-                neighbours.Add(new APoint { X = vertex.X + 1, Y = vertex.Y });
+                neighbours.Add(new APoint { X = vertex.X + 1, Y = vertex.Y, Direction = "down" });
             }
 
             if (vertex.Y < matrix[0].Length - 1 && matrix[vertex.X][vertex.Y + 1] == '1')
             {
-                neighbours.Add(new APoint { X = vertex.X, Y = vertex.Y + 1 });
+                neighbours.Add(new APoint { X = vertex.X, Y = vertex.Y + 1 , Direction = "right"});
             }
 
             if (vertex.X > 0 && matrix[vertex.X - 1][vertex.Y] == '1')
             {
-                neighbours.Add(new APoint { X = vertex.X - 1, Y = vertex.Y });
+                neighbours.Add(new APoint { X = vertex.X - 1, Y = vertex.Y, Direction = "up"});
             }
 
             if (vertex.Y > 0 && matrix[vertex.X][vertex.Y - 1] == '1')
             {
-                neighbours.Add(new APoint { X = vertex.X, Y = vertex.Y - 1 });
+                neighbours.Add(new APoint { X = vertex.X, Y = vertex.Y - 1, Direction = "left" });
             }
             return neighbours;
         }
@@ -71,7 +71,7 @@ namespace AI_Homework
 
             char[][] matrix = new char[7][]
             {
-                new char[7] {'1', '1','0','1','1','1','1'},
+                new char[7] {'1', '0','0','1','1','1','1'},
                 new char[7] {'1', '0','0','1','1','1','1'},
                 new char[7] {'1', '1','1','1','1', '1','1'},
                 new char[7] {'1', '1','1','0','1', '1', '1'},
@@ -90,9 +90,9 @@ namespace AI_Homework
             {
                 for (int j = 0; j < n; j++)
                 {
-                    System.Console.Write(matrix[i][j]);
+                    Console.Write(matrix[i][j]);
                 }
-                System.Console.WriteLine();
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
@@ -108,9 +108,10 @@ namespace AI_Homework
 
     public class APoint : Point
     {
-        public int F { get; set; }
         public int G { get; set; }
         public int H { get; set; }
+        public int F { get; set; }
+        public string Direction { get; set; }
         public APoint Parent { get; set; }
     }
 }
