@@ -12,7 +12,7 @@ namespace AI_Homework
             int depth = 0;
             while (true)
             {
-                var result = DepthLimitedSearch(start, end, depth);
+                var result = depthLimitedSearch(start, end, depth);
                 if (result != null)
                     return;
 
@@ -21,7 +21,7 @@ namespace AI_Homework
             }
         }
 
-        private static Point DepthLimitedSearch(Point current, Point goal, int depth)
+        private static Point depthLimitedSearch(Point current, Point goal, int depth)
         {
             Matrix[current.X][current.Y] = '*';
             if (depth == 0 && current.X == goal.X && current.Y == goal.Y)
@@ -33,7 +33,7 @@ namespace AI_Homework
                 foreach (var child in children)
                 {
                     Matrix[child.X][child.Y] = '*';
-                    Point found = DepthLimitedSearch(child, goal, depth - 1);
+                    Point found = depthLimitedSearch(child, goal, depth - 1);
                     if (found != null)
                         return found;
                 }

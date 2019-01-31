@@ -42,7 +42,7 @@ namespace AI_Homework
                 var adjacentSquares = Common.GetNeithbours(Matrix, current);
                 g++;
 
-                foreach (APoint adjacentSquare in adjacentSquares)
+                foreach (var adjacentSquare in adjacentSquares)
                 {
                     // if this adjacent square is already in the closed list, ignore it
                     if (closedList.FirstOrDefault(l => l.X == adjacentSquare.X

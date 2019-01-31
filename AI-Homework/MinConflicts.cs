@@ -9,36 +9,28 @@ namespace AI_Homework
         private Random random { get; set; }
         private int[] rows { get; set; }
 
-        /**
-         * Creates a new n x n board and randomly fills it with one
-         * queen in each column.
-         */
         public Board(int n)
         {
-            random = new Random();
-            rows = new int[n];
+            this.random = new Random();
+            this.rows = new int[n];
             this.Scramble();
         }
 
-        /**
-         * Returns the number of queens that conflict with (row,col), not
-         * counting the queen in column col.
-         */
-        private int conflicts(int row, int col)
+        private int getConflictsWithQueen(int row, int col)
         {
             int count = 0;
             for (int c = 0; c < rows.Length; c++)
             {
-                if (c == col) continue;
+                if (c == col)
+                    continue;
                 int r = rows[c];
-                if (r == row || Math.Abs(r - row) == Math.Abs(c - col)) count++;
+                if (r == row || Math.Abs(r - row) == Math.Abs(c - col))
+                    count++;
             }
             return count;
         }
 
-        /**
-        * Randomly fills the board with one queen in each column.
-        */
+
         public void Scramble()
         {
             for (int i = 0, n = rows.Length; i < n; i++)
@@ -54,41 +46,33 @@ namespace AI_Homework
             }
         }
 
-        /**
-         * Fills the board with a legal arrangement of queens.
-         */
         public void Solve()
         {
             int moves = 0;
-
-            List<int> candidates = new List<int>();
+            var candidates = new List<int>();
 
             while (true)
             {
-
-                // Find nastiest queen
                 int maxConflicts = 0;
                 candidates.Clear();
-                for (int c = 0; c < rows.Length; c++)
+
+                for (int col = 0; col < rows.Length; col++)
                 {
-                    int conflictsCount = conflicts(rows[c], c);
+                    int conflictsCount = getConflictsWithQueen(rows[col], col);
                     if (conflictsCount == maxConflicts)
                     {
-                        candidates.Add(c);
+                        candidates.Add(col);
                     }
                     else if (conflictsCount > maxConflicts)
                     {
                         maxConflicts = conflictsCount;
                         candidates.Clear();
-                        candidates.Add(c);
+                        candidates.Add(col);
                     }
                 }
 
                 if (maxConflicts == 0)
-                {
-                    // Checked *every* queen and found no conflicts
                     return;
-                }
 
                 // Pick a random queen from those that had the most conflicts
                 int worstQueenColumn =
@@ -99,7 +83,7 @@ namespace AI_Homework
                 candidates.Clear();
                 for (int r = 0; r < rows.Length; r++)
                 {
-                    int conflictsCount = conflicts(r, worstQueenColumn);
+                    int conflictsCount = getConflictsWithQueen(r, worstQueenColumn);
                     if (conflictsCount == minConflicts)
                     {
                         candidates.Add(r);
@@ -113,15 +97,12 @@ namespace AI_Homework
                 }
 
                 if (candidates.Any())
-                {
-                    rows[worstQueenColumn] =
-                        candidates[(random.Next(candidates.Count))];
-                }
+                    rows[worstQueenColumn] = candidates[(random.Next(candidates.Count))];
 
                 moves++;
                 if (moves == rows.Length * 2)
                 {
-                    // Trying too long... start over.
+                    // Restart
                     Scramble();
                     moves = 0;
                 }
@@ -135,20 +116,14 @@ namespace AI_Homework
             {
                 for (int col = 0; col < boardSize; col++)
                 {
+                    // Queen
                     if (rows[col] == row)
-                    {
-                        // Queen
                         Console.Write("* ");
-                    }
                     else
-                    {
-                        // Blank space
                         Console.Write("_ ");
-                    }
                 }
                 Console.WriteLine();
             }
         }
-
     }
 }
