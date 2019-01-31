@@ -16,9 +16,7 @@ namespace AI_Homework
                     {
                         matrix[i][j] = '1';
                     }
-
                 }
-
             }
         }
 
@@ -26,7 +24,6 @@ namespace AI_Homework
         {
             return Math.Abs(to.X - from.X) + Math.Abs(to.Y - from.Y);
         }
-
 
         public static List<APoint> GetNeithbours(char[][] matrix, Point vertex)
         {
@@ -104,6 +101,7 @@ namespace AI_Homework
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public Point parent { get; set; }
     }
 
     public class APoint : Point

@@ -1,11 +1,11 @@
 ﻿
 namespace AI_Homework
 {
-    public static class BlindAlogorithms
+    public static class IDS
     {
         public static char[][] Matrix { get; set; }
 
-        public static void IterativeDeepeningDFS(Point start, Point end)
+        public static void Run(Point start, Point end)
         {
             int depth = 0;
             while (true)

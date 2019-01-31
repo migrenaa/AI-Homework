@@ -11,20 +11,22 @@ namespace AI_Homework
             var target = new APoint { X = 5, Y = 4 };
 
             //var DFSmatrix = Common.GetRandomMatrix(7, 7);
-            //var newMatrix = Algorithms.DFS(DFSmatrix, start, target);
+            //var dfsMatrix = Algorithms.DFS(DFSmatrix, start, target);
             //Console.WriteLine("DFS path: ");
-            //Common.PrettyPrint(newMatrix, 7, 7);
+            //Common.PrettyPrint(dfsMatrix, 7, 7);
+
+            //Console.WriteLine("---------------------------");
 
             //var BFSmatrix = Common.GetRandomMatrix(7, 7);
-            //var newMatrix = Algorithms.BFS(BFSmatrix, start, target);
+            //var bfsMatrix = Algorithms.BFS(BFSmatrix, start, target);
             //Console.WriteLine("BFS path: ");
-            //Common.PrettyPrint(newMatrix, 7, 7);
+            //Common.PrettyPrint(bfsMatrix, 7, 7);
 
-            var iterativeDeepeningDFSMatrix = Common.GetRandomMatrix(7, 7);
-            BlindAlogorithms.Matrix = iterativeDeepeningDFSMatrix;
-            BlindAlogorithms.IterativeDeepeningDFS(start, target);
-            Console.WriteLine("IDS path: ");
-            Common.PrettyPrint(iterativeDeepeningDFSMatrix, 7, 7);
+            //var idsMatrix = Common.GetRandomMatrix(7, 7);
+            //IDS.Matrix = idsMatrix;
+            //IDS.Run(start, target);
+            //Console.WriteLine("IDS path: ");
+            //Common.PrettyPrint(idsMatrix, 7, 7);
 
             //var aStarMatrix = Common.GetRandomMatrix(7, 7);
             //InformedAlgs.Matrix = aStarMatrix;
@@ -33,9 +35,10 @@ namespace AI_Homework
             //Console.WriteLine(InformedAlgs.PathLength);
             //Common.PrettyPrint(aStarMatrix, 7, 7);
 
-            //QueensProblem queensProblem = new QueensProblem(8);
+            //int n = 1000;
+            //QueensProblem queensProblem = new QueensProblem(n);
             //queensProblem.Solve();
-            //queensProblem.GetSolution(8);
+            //queensProblem.GetSolution(n);
 
             //var knapsack = new Knapsack();
             //knapsack.InitializeItems();
@@ -43,11 +46,11 @@ namespace AI_Homework
             //generator.Solve();
             //Console.Read();
 
-            //var knn = new Knn();
-            //knn.InitializeSets();
-            //int k = 4;
-            //knn.Classify(k);
-            //Console.WriteLine("Accuracy: " + knn.predictedAnswers * 100 / 20 + "%");
+            var knn = new Knn();
+            knn.InitializeSets();
+            int k = 12;
+            knn.Classify(k);
+            Console.WriteLine("Accuracy: " + knn.predictedAnswers * 100 / 20 + "%");
 
         }
     }
